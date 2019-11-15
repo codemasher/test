@@ -25,14 +25,6 @@ jobs:
       - name: "Disable Xdebug"
         run: php7.3 --ini | grep xdebug | sed 's/,$//' | xargs sudo rm
 
-      - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1.0.0
-        with:
-          path: ~/.composer/cache
-          key: php7.3-composer-locked-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            php7.3-composer-locked-
-
       - name: "Install locked dependencies with composer"
         run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
 
@@ -91,14 +83,6 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1.1.0
-
-      - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1.0.0
-        with:
-          path: ~/.composer/cache
-          key: php7.3-composer-locked-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            php7.3-composer-locked-
 
       - name: "Install locked dependencies with composer"
         run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
