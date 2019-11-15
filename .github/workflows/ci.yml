@@ -23,6 +23,7 @@ jobs:
         php-binary:
           - php7.2
           - php7.3
+          - php7.4
 
     steps:
       - name: "Checkout"
