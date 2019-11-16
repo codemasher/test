@@ -31,8 +31,11 @@ jobs:
       - name: "Install dependencies with composer"
         run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --prefer-source --no-progress --no-suggest
 
-      - name: "Run unit tests with phpunit/phpunit"
+      - name: "Run unit tests with phpunit"
         run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
+
+      - name: "Run mutation tests with infection"
+        run: ${{ matrix.php-binary }} vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=100 --min-msi=100
 
       - name: "Send code coverage report to Codecov.io"
         env:
