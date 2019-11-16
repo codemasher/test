@@ -5,7 +5,6 @@ includes:
 	- vendor/phpstan/phpstan/conf/config.levelmax.neon
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 	- vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
-	- vendor/ekino/phpstan-banned-code/extension.neon
 
 parameters:
 	inferPrivatePropertyTypeFromConstructor: true
