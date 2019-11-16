@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 
 class Test extends TestCase{
 
-	public function testStuff(){
+	public function testStuff():void{
 		$test = new TestClass;
-		$this->assertTrue($test->test());
+		$this::assertTrue($test->test());
 	}
 
 }
