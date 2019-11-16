@@ -32,7 +32,7 @@ jobs:
         run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --prefer-source --no-progress --no-suggest
 
       - name: "Run phpstan/phpstan"
-        run: php7.3 vendor/bin/phpstan analyse --configuration=phpstan.neon
+        run: ${{ matrix.php-binary }} vendor/bin/phpstan analyse --configuration=phpstan.neon
 
       - name: "Run unit tests with phpunit"
         run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
