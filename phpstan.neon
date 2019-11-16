@@ -3,6 +3,7 @@ includes:
 	- vendor/phpstan/phpstan-strict-rules/rules.neon
 	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
 	- vendor/phpstan/phpstan/conf/config.levelmax.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
 
 parameters:
 	inferPrivatePropertyTypeFromConstructor: true
