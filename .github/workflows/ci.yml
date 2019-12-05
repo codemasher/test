@@ -57,11 +57,10 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1.1.0
+        run: pecl channel-update pecl.php.net
 
       - name: "Install PHP ImageMagick extension"
-        run:
-          - pecl channel-update pecl.php.net
-          - printf "\n" | pecl install imagick
+        run: printf "\n" | pecl install imagick
 
       - name: "Install locked dependencies with composer"
         run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
