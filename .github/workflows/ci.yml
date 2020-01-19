@@ -34,8 +34,8 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v1.1.0
 
-      - name: "Install locked dependencies with composer"
-        run: ${{ matrix.php-binary }} $(which composer) require --dev mheap/phpunit-github-actions-printer
+#      - name: "Install locked dependencies with composer"
+#        run: ${{ matrix.php-binary }} $(which composer) require --dev mheap/phpunit-github-actions-printer
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
@@ -50,7 +50,7 @@ jobs:
         run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
 
       - name: "Run unit tests with phpunit"
-        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml --printer mheap\\GithubActionsReporter\\Printer
+        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml #--printer mheap\\GithubActionsReporter\\Printer
 
 
   code-coverage:
