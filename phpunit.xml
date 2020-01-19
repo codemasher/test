@@ -4,7 +4,7 @@
 		 backupStaticAttributes="false"
 		 bootstrap="vendor/autoload.php"
 		 cacheResult="true"
-		 cacheResultFile="build/phpunit.cache"
+		 cacheResultFile=".build/phpunit.cache"
 		 colors="true"
 		 columns="max"
 		 convertErrorsToExceptions="true"
