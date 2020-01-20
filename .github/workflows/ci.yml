@@ -91,19 +91,19 @@ jobs:
         run: php7.3 vendor/bin/phpstan analyse --configuration=phpstan.neon
 
 
-  mutation-tests:
-    name: "Mutation Tests"
-    runs-on: ubuntu-latest
+#  mutation-tests:
+#    name: "Mutation Tests"
+#    runs-on: ubuntu-latest
 
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1.1.0
+#    steps:
+#      - name: "Checkout"
+#        uses: actions/checkout@v1.1.0
 
-      - name: "Install locked dependencies with composer"
-        run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
+#      - name: "Install locked dependencies with composer"
+#        run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
 
-      - name: "Run unit tests with phpunit"
-        run: php7.3 -d opcache.enable_cli=0 vendor/bin/phpunit --configuration=phpunit.xml --coverage-xml=.build/coverage/coverage-xml --log-junit=.build/coverage/phpunit.junit.xml
+#      - name: "Run unit tests with phpunit"
+#        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --coverage-xml=.build/coverage/coverage-xml --log-junit=.build/coverage/phpunit.junit.xml
 
-      - name: "Run mutation tests with infection/infection"
-        run: php7.3 -d opcache.enable_cli=0 vendor/bin/infection --configuration=infection.json --ignore-msi-with-no-mutations --coverage=.build/coverage
+#      - name: "Run mutation tests with infection/infection"
+#        run: php7.3 vendor/bin/infection --configuration=infection.json --ignore-msi-with-no-mutations --coverage=.build/coverage
