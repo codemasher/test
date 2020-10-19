@@ -1,110 +1,84 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-# https://github.com/localheinz/php-library-template/blob/master/.github/workflows/continuous-integration.yml
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
-  pull_request:
-  push:
-    branches:
-      - master
-    tags:
-      - "**"
+  - pull_request
+  - push
 
 name: "Continuous Integration"
 
-jobs:
 
+jobs:
   tests:
-    name: "Unit Tests"
-    runs-on: ubuntu-latest
+    name: Tests
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      PHP_EXTENSIONS: dom, json, libxml, mbstring, pdo_sqlite, soap, xml, xmlwriter
+      PHP_INI_VALUES: assert.exception=1, zend.assertions=1
 
     strategy:
+      fail-fast: false
       matrix:
-        php-binary:
-          - php7.2
-          - php7.3
-          - php7.4
-          - php8.0
+        os:
+          - ubuntu-latest
+          - windows-latest
+
+        php-version:
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
 
         dependencies:
           - lowest
-#          - locked
           - highest
 
     steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1.1.0
+      - name: Configure git to avoid issues with line endings
+        if: matrix.os == 'windows-latest'
+        run: git config --global core.autocrlf false
 
-      - name: "Install locked dependencies with composer"
-        run: ${{ matrix.php-binary }} $(which composer) require --dev mheap/phpunit-github-actions-printer
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: "Install lowest dependencies with composer"
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
+
+      - name: Determine composer cache directory on Linux
+        if: matrix.os == 'ubuntu-latest'
+        run: echo "::set-env name=COMPOSER_CACHE_DIR::$($(which composer) config cache-dir)"
+
+      - name: Determine composer cache directory on Windows
+        if: matrix.os == 'windows-latest'
+        run: ECHO "::set-env name=COMPOSER_CACHE_DIR::~\AppData\Local\Composer"
+
+      - name: Cache dependencies installed with composer
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
+      - name: Install lowest dependencies with composer
         if: matrix.dependencies == 'lowest'
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest --prefer-lowest
+        run: php $(which composer) update --no-ansi --no-interaction --no-progress --no-suggest --prefer-lowest
 
-      - name: "Install locked dependencies with composer"
-        if: matrix.dependencies == 'locked'
-        run: ${{ matrix.php-binary }} $(which composer) install --no-interaction --no-progress --no-suggest
-
-      - name: "Install highest dependencies with composer"
+      - name: Install highest dependencies with composer
         if: matrix.dependencies == 'highest'
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
+        run: php $(which composer) update --no-ansi --no-interaction --no-progress --no-suggest
 
-      - name: "Run unit tests with phpunit"
-        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml #--printer mheap\\GithubActionsReporter\\Printer
+      - name: Run tests with phpunit
+        run: php vendor/bin/phpunit --configuration=phpunit.xml
 
-
-  code-coverage:
-    name: "Code Coverage"
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1.1.0
-
-      - name: "Install locked dependencies with composer"
-        run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
-
-      - name: "Dump Xdebug filter with phpunit/phpunit"
-        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
-
-      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --coverage-clover=.build/logs/clover.xml --prepend=.build/phpunit/xdebug-filter.php
-
-      - name: "Send code coverage report to Codecov.io"
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: bash <(curl -s https://codecov.io/bash)
-
-
-  static-code-analysis:
-    name: "Static Code Analysis"
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1.1.0
-
-      - name: "Install locked dependencies with composer"
-        run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
-
-      - name: "Run phpstan/phpstan"
-        run: php7.4 vendor/bin/phpstan analyse --configuration=phpstan.neon
-
-
-#  mutation-tests:
-#    name: "Mutation Tests"
-#    runs-on: ubuntu-latest
-
-#    steps:
-#      - name: "Checkout"
-#        uses: actions/checkout@v1.1.0
-
-#      - name: "Install locked dependencies with composer"
-#        run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
-
-#      - name: "Run unit tests with phpunit"
-#        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --coverage-xml=.build/coverage/coverage-xml --log-junit=.build/coverage/phpunit.junit.xml
-
-#      - name: "Run mutation tests with infection/infection"
-#        run: php7.3 vendor/bin/infection --configuration=infection.json --ignore-msi-with-no-mutations --coverage=.build/coverage
+#      - name: Send code coverage report to Codecov.io
+#        uses: codecov/codecov-action@v1
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
