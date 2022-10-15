@@ -2,22 +2,25 @@ on:
   - pull_request
   - push
 
-name: "Windows"
+name: "Tests"
 
 jobs:
 
   windows:
-    name: "Tests (Windows)"
+    name: "Tests"
 
-    defaults:
-      run:
-        shell: bash
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: "Checkout"
         uses: actions/checkout@v3
 
       - name: "phpinfo"
-        run: php -i
+        run: php -v
