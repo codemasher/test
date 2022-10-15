@@ -27,8 +27,10 @@ jobs:
 
       - name: "phpinfo"
         if: runner.os == 'Linux'
-        run: which php
+        run: |
+          which php
 
       - name: "phpinfo"
         if: runner.os == 'Windows'
-        run: where php.exe
+        shell: powershell
+        run: Get-Command php.exe
