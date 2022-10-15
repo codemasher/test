@@ -24,3 +24,11 @@ jobs:
 
       - name: "phpinfo"
         run: php -v
+
+      - name: "phpinfo"
+        if: runner.os == 'Linux'
+        run: locate php
+
+      - name: "phpinfo"
+        if: runner.os == 'Windows'
+        run: where php.exe
