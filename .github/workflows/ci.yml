@@ -27,7 +27,7 @@ jobs:
 
       - name: "phpinfo"
         if: runner.os == 'Linux'
-        run: locate php
+        run: which php
 
       - name: "phpinfo"
         if: runner.os == 'Windows'
