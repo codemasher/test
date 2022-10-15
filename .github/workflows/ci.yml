@@ -34,7 +34,8 @@ jobs:
       - name: "phpinfo"
         if: runner.os == 'Windows'
         shell: powershell
-        run: Get-Command php.exe
+        run: |
+          Get-Command php.exe
           Get-ChildItem -Path c:\tools\php
 
       - name: "Install PHP"
