@@ -11,3 +11,4 @@
 $secret = getenv('TEST_SECRET');
 
 var_dump($secret);
+var_dump($_SERVER);
