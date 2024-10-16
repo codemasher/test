@@ -26,7 +26,7 @@ body:
     attributes:
       label: "Code sample"
       placeholder: "PHP code"
-      description: "If applicable, please add a PHP code sample to illustrate the feature. (Note: the content of this textarea will be rendered as PHP code!)"
+      description: "If applicable, please add a code sample to illustrate the feature.\nNote: the content of this textarea will be rendered as PHP code!"
       render: php
 
   - type: textarea
@@ -42,7 +42,7 @@ body:
     id: pr
     attributes:
       label: "Pull Request"
-      description: "**Are you (the requester) willing to submit a pull request for that feature?**\n(A yes will greatly increase the chance that the feature will be added)"
+      description: "**Are you (the requester) willing to submit a pull request for that feature?**\nA yes will greatly increase the chance that the feature will be added."
       options:
         - ""
         - "NO"
