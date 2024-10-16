@@ -10,23 +10,23 @@ body:
 
   - type: markdown
     attributes:
-      value: "You have an idea for a new feature (or improve an existing one)? Great!"
+      value: "You have an idea for a new feature (or improve an existing one)? Great!\nIf you have a question or an issue that is not a feature request, please use [the Q&A section under discussions](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:
       required: true
     attributes:
-      label: "Description"
-      placeholder: "A clear and concise description of the requested feature"
+      label: "Feature description"
       description: "Please describe the requested feature."
+      placeholder: "A clear and concise description of the requested feature"
 
   - type: textarea
     validations:
       required: false
     attributes:
       label: "Code sample"
-      placeholder: "PHP code"
       description: "If applicable, please add a code sample to illustrate the feature.\nNote: the content of this textarea will be rendered as PHP code!"
+      placeholder: "PHP code"
       render: php
 
   - type: textarea
@@ -50,4 +50,4 @@ body:
 
   - type: markdown
     attributes:
-      value: "Thanks for taking the time to fill out this issue report!"
+      value: "Thanks for taking the time to fill out this feature request!"
