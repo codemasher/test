@@ -10,7 +10,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "You have an idea for a new feature (or improve an existing one)? Great!\nIf you have a question or an issue that is not a feature request, please use [the Q&A section under discussions](../discussions) instead. Thanks!"
+      value: "You have an idea for a new feature (or improve an existing one)? Great!\nIf you have a question or an issue that is not a feature request, please go to [the discussions section](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:

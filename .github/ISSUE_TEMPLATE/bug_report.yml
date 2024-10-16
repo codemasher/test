@@ -2,7 +2,7 @@
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
 
 name: "Bug report"
-description: "You found a bug? Does the library not behave as expected?"
+description: "You've found a bug? Does the library not behave as expected?"
 title: "[BUG] "
 labels: ["bug"]
 
@@ -10,31 +10,31 @@ body:
 
   - type: markdown
     attributes:
-      value: "You found a bug? Does the library not behave as expected?\nPlease help us to improve and fill out the following form."
+      value: "You've found a bug? Does the library not behave as expected?\nPlease help us to improve and fill out the following form.\nIf you have a question or an issue that is not a bug, please go to [the discussions section](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:
       required: true
     attributes:
-      label: "Description"
-      placeholder: "A clear and concise description of the issue"
+      label: "Issue description"
       description: "Please describe the bug or unexpected behaviour, add screenshots to help explain the problem if applicable."
+      placeholder: "A clear and concise description of the issue"
 
   - type: textarea
     validations:
       required: true
     attributes:
       label: "Expected behavior"
-      placeholder: "A clear and concise description of what you expected to happen"
       description: "Please describe what you expected to happen or how the library should behave in this case."
+      placeholder: "A clear and concise description of what you expected to happen"
 
   - type: textarea
     validations:
       required: false
     attributes:
       label: "Code sample"
+      description: "If applicable, please add a code sample that reproduces the issue.\nNote: the content of this textarea will be rendered as PHP code!"
       placeholder: "PHP code"
-      description: "If applicable, please add a PHP code sample that reproduces the issue. (Note: the content of this textarea will be rendered as PHP code!)"
       render: php
 
   - type: dropdown
@@ -42,8 +42,8 @@ body:
     validations:
       required: true
     attributes:
-      description: "What version of the library are you running?"
       label: "Library version"
+      description: "What version of the library are you running?"
       options:
         - "latest"
         - "dev-main"
