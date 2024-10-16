@@ -10,7 +10,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "There's an issue with the documentation or you have a proposal for an addition?\nIf you have a question or an issue that has nothing to do with the documentation, please go to [the discussions section](../discussions) instead. Thanks!"
+      value: "There's an issue with the documentation or you have a proposal for an addition?\nPlease help us to improve this project and fill out the following form.\nIf you have a question or an issue that has nothing to do with the documentation, please go to [the discussions section](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:
