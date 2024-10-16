@@ -44,6 +44,7 @@ body:
       label: "Pull Request"
       description: "Are you (the requester) willing to submit a pull request for that feature?\n(A yes will greatly increase the chance that the feature will be added)"
       options:
+        - ""
         - "NO"
         - "YES"
 
