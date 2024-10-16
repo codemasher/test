@@ -1,8 +1,8 @@
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
 
-name: Bug report
-description: You found a bug? Does the library not behave as expected?
+name: "Bug report"
+description: "You found a bug? Does the library not behave as expected?"
 title: "[BUG] "
 labels: ["bug"]
 
@@ -11,32 +11,32 @@ body:
   - type: markdown
     attributes:
       value: |
-        You found a bug? Does the library not behave as expected?
-        Please help us to improve and fill out the following form.
+        "You found a bug? Does the library not behave as expected?"
+        "Please help us to improve and fill out the following form."
 
   - type: textarea
     validations:
       required: true
     attributes:
-      label: Description
-      placeholder: A clear and concise description of the issue
-      description: Please describe the bug or unexpected behaviour, add screenshots to help explain the problem if applicable.
+      label: "Description"
+      placeholder: "A clear and concise description of the issue"
+      description: "Please describe the bug or unexpected behaviour, add screenshots to help explain the problem if applicable."
 
   - type: textarea
     validations:
       required: true
     attributes:
-      label: Expected behavior
-      placeholder: A clear and concise description of what you expected to happen
-      description: Please describe what you expected to happen or how the library should behave in this case.
+      label: "Expected behavior"
+      placeholder: "A clear and concise description of what you expected to happen"
+      description: "Please describe what you expected to happen or how the library should behave in this case."
 
   - type: textarea
     validations:
       required: false
     attributes:
-      label: Code sample
-      placeholder: PHP code
-      description: If applicable, please add a PHP code sample that reproduces the issue. (The content of this textarea will be rendered as PHP code!)
+      label: "Code sample"
+      placeholder: "PHP code"
+      description: "If applicable, please add a PHP code sample that reproduces the issue. (Note: the content of this textarea will be rendered as PHP code!)"
       render: php
 
   - type: dropdown
@@ -44,28 +44,28 @@ body:
     validations:
       required: true
     attributes:
-      description: What version of the library are you running?
-      label: Library version
+      description: "What version of the library are you running?"
+      label: "Library version"
       options:
-        - latest
-        - dev-main
-        - 6.x
-        - 5.x
-        - 4.x
-        - 3.x
-        - 2.x
-        - 1.x
+        - "latest"
+        - "dev-main"
+        - "6.x"
+        - "5.x"
+        - "4.x"
+        - "3.x"
+        - "2.x"
+        - "1.x"
       default: 0
 
   - type: textarea
     validations:
       required: false
     attributes:
-      label: Additional context
+      label: "Additional context"
       description: |
-        Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, other code snippets...
+        "Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, other code snippets..."
 
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this issue report!
+        "Thanks for taking the time to fill out this issue report!"
