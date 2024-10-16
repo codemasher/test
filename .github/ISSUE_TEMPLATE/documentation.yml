@@ -3,14 +3,14 @@
 
 name: "Documentation"
 description: "There's a documentation issue?"
-title: "[DOCS]"
+title: "[DOCS] "
 labels: ["docs"]
 
 body:
 
   - type: markdown
     attributes:
-      value: "There's an issue with the documentation or you have a proposal for an addition?"
+      value: "There's an issue with the documentation or you have a proposal for an addition?\nIf you have a question or an issue that has nothing to do with the documentation, please use the Q&A section [under discussions](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:
