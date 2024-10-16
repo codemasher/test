@@ -2,17 +2,23 @@
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
 
 name: Bug report
-description: You have found a bug? Does the library not behave as expected? That's great (ok, not that great)! Please help us to improve!
+description: You found a bug? Does the library not behave as expected?
 title: "[BUG] "
 labels: ["bug"]
 
 body:
 
+  - type: markdown
+    attributes:
+      value: |
+        You found a bug? Does the library not behave as expected? That's great (ok, not that great)!
+        Please help us to improve and fill out the following form.
+
   - type: textarea
     validations:
       required: true
     attributes:
-      label: Bug report
+      label: Description
       placeholder: A clear and concise description of the issue
       description: Describe the bug or unexpected behaviour, if applicable, add screenshots to help explain your problem.
 
@@ -62,4 +68,3 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-
