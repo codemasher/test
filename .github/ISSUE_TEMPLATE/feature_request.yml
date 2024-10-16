@@ -1,0 +1,52 @@
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
+
+name: "Feature request"
+description: "You have an idea for a new feature?"
+title: "[ENHANCEMENT]"
+labels: ["enhancement"]
+
+body:
+
+  - type: markdown
+    attributes:
+      value: "You have an idea for a new feature (or improve an existing one)? Great!"
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Description"
+      placeholder: "A clear and concise description of the requested feature"
+      description: "Please describe the requested feature."
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: "Code sample"
+      placeholder: "PHP code"
+      description: "If applicable, please add a PHP code sample to illustrate the feature. (Note: the content of this textarea will be rendered as PHP code!)"
+      render: php
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: "Additional context"
+      description: "Add any other context that might be of use here, e.g. other code snippets..."
+
+  - type: dropdown
+    validations:
+      required: true
+    id: pr
+    attributes:
+      label: "Pull Request"
+      description: "Are you (the requester) willing to submit a pull request for that feature?\n(A yes will greatly increase the chance that the feature will be added)"
+      options:
+        - "NO"
+        - "YES"
+
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to fill out this issue report!"
