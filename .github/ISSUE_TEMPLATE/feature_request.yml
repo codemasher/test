@@ -45,8 +45,8 @@ body:
       description: "**Are you (the requester) willing to submit a pull request for that feature?**\nA yes will greatly increase the chance that the feature will be added."
       options:
         - ""
-        - "NO"
-        - "YES"
+        - "No - I can't/won't submit a PR"
+        - "Yes - I will submit a PR"
 
   - type: markdown
     attributes:
