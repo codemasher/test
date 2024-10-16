@@ -1,73 +1,65 @@
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
 # https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
-name: Bug Report
-description: File a bug report.
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+
+name: Bug report
+description: You have found a bug? Does the library not behave as expected? That's great (ok, not that great)! Please help us to improve!
+title: "[BUG] "
+labels: ["bug"]
+
 body:
-  -
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Bug report
+      placeholder: A clear and concise description of the issue
+      description: Describe the bug or unexpected behaviour, if applicable, add screenshots to help explain your problem.
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Expected behavior
+      placeholder: A clear and concise description of what you expected to happen
+      description:
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: Code sample
+      placeholder: PHP code
+      description: Please add a PHP code sample that reproduces the issue if applicable. (The content of this textarea will be rendered as PHP code!)
+      render: php
+
+  - type: dropdown
+    id: version
+    validations:
+      required: true
+    attributes:
+      description: What version of the library are you running?
+      label: Library version
+      options:
+        - latest
+        - dev-main
+        - 6.x
+        - 5.x
+        - 4.x
+        - 3.x
+        - 2.x
+        - 1.x
+      default: 0
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: Additional context
+      description: Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, ...
+
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
 
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-
-  - type: textarea
-    id: what-happened
-    attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
-    validations:
-      required: true
-
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
-
-  - type: textarea
-    id: logs
-    attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com).
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
