@@ -10,9 +10,7 @@ body:
 
   - type: markdown
     attributes:
-      value: |
-        "You found a bug? Does the library not behave as expected?"
-        "Please help us to improve and fill out the following form."
+      value: "You found a bug? Does the library not behave as expected?\nPlease help us to improve and fill out the following form."
 
   - type: textarea
     validations:
@@ -62,10 +60,8 @@ body:
       required: false
     attributes:
       label: "Additional context"
-      description: |
-        "Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, other code snippets..."
+      description: "Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, other code snippets..."
 
   - type: markdown
     attributes:
-      value: |
-        "Thanks for taking the time to fill out this issue report!"
+      value: "Thanks for taking the time to fill out this issue report!"
