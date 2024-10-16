@@ -11,7 +11,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        You found a bug? Does the library not behave as expected? That's great (ok, not that great)!
+        You found a bug? Does the library not behave as expected?
         Please help us to improve and fill out the following form.
 
   - type: textarea
@@ -20,7 +20,7 @@ body:
     attributes:
       label: Description
       placeholder: A clear and concise description of the issue
-      description: Describe the bug or unexpected behaviour, if applicable, add screenshots to help explain your problem.
+      description: Please describe the bug or unexpected behaviour, add screenshots to help explain the problem if applicable.
 
   - type: textarea
     validations:
@@ -36,7 +36,7 @@ body:
     attributes:
       label: Code sample
       placeholder: PHP code
-      description: Please add a PHP code sample that reproduces the issue if applicable. (The content of this textarea will be rendered as PHP code!)
+      description: If applicable, please add a PHP code sample that reproduces the issue. (The content of this textarea will be rendered as PHP code!)
       render: php
 
   - type: dropdown
@@ -62,9 +62,11 @@ body:
       required: false
     attributes:
       label: Additional context
-      description: Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, ...
+      description: |
+        Add any other context that might be of use here, e.g. exact library version, PHP Version, operating system, other code snippets...
 
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        
+        Thanks for taking the time to fill out this issue report!
